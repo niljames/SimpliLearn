@@ -1,0 +1,6 @@
+101,Alicia Hepburn,6,B
+102,Amy Santiago,5,B
+103,Olivia Fitz,3,A
+104,Rosemary Park,7,C
+105,Tessy Rose,4,B
+106,Zach Woods,5,A
