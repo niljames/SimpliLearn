@@ -1,0 +1,5 @@
+Neha,103,Kochi
+Mia,96,Bangalore
+Milind,99,Mumbai
+Kiran,54,Chennai
+Nileena,107,Kochi
