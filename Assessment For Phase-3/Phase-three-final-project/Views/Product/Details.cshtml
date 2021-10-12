@@ -1,0 +1,47 @@
+﻿@model Phase_three_final_project.Models.Product
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="card text-center">
+    <div class="card-header">
+        <img src="@Model.Image" class="card-img-top" alt="...">
+    </div>
+    <div class="card-body" style="margin:0 auto;">
+        <table>
+            <tr>
+                <td class="col-sm-2">@Html.DisplayNameFor(model => model.Name)</td>
+                <td class="col-sm-10">@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">@Html.DisplayNameFor(model => model.Price)</td>
+                <td class="col-sm-10">$ @Html.DisplayFor(model => model.Price)</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">@Html.DisplayNameFor(model => model.Description.OS)</td>
+                <td class="col-sm-10">@Html.DisplayFor(model => model.Description.OS)</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">@Html.DisplayNameFor(model => model.Description.Memory)</td>
+                <td class="col-sm-10">@Html.DisplayFor(model => model.Description.Memory)</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">@Html.DisplayNameFor(model => model.Description.Processor)</td>
+                <td class="col-sm-10">@Html.DisplayFor(model => model.Description.Processor)</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">@Html.DisplayNameFor(model => model.Description.HardDrive)</td>
+                <td class="col-sm-10">@Html.DisplayFor(model => model.Description.HardDrive)</td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer text-muted">
+        <a class="btn btn-sm btn-outline-info" asp-route-id="@Model.ProductId" asp-controller="Cart" asp-action="Buy">Add to Cart</a>
+        <a class="btn btn-sm btn-outline-success" asp-action="Index">Back to List</a>
+    </div>
+</div>
+

@@ -1,0 +1,93 @@
+﻿@model Phase_three_final_project.Models.Address;
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.16/dist/tailwind.min.css" />
+</head>
+<body>
+    <h1 style="margin:0 auto;">Cart</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.cart)
+            {
+                <tr>
+                    <td>@item.product.ProductId</td>
+                    <td>@item.product.Name</td>
+                    <td>$ @item.product.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>$ @(item.product.Price*item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="4">
+                    Total
+                </th>
+                <th>$ @ViewBag.total</th>
+            </tr>
+        </tfoot>
+    </table>
+    <br />
+    <div class="bg-gray-300">
+        <div class="py-12">
+            <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg md:max-w-xl mx-2">
+                <div class="md:flex ">
+                    <div class="w-full p-4 px-5 py-5">
+                        <div class="flex flex-row">
+                            <h2 class="text-3xl font-semibold">Digital</h2>
+                            <h2 class="text-3xl text-red-400 font-semibold">Retailers Inc</h2>
+                        </div>
+                        <div class="flex flex-row pt-2 text-xs pt-6 pb-5">
+                            <span class="font-bold">Information</span>
+                            <small class="text-gray-400 ml-1">></small>
+                            <span class="text-gray-400 ml-1">Shopping</span>
+                            <small class="text-gray-400 ml-1">></small>
+                            <span class="text-gray-400 ml-1">Payment</span>
+                        </div>
+                        <span>Customer Information</span>
+                        <div class="relative pb-5">
+                            <input type="text" name="mail" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="E-mail">
+                            <a class="absolute text-blue-500 right-2 top-4 font-medium text-sm" asp-controller="Account" asp-action="Logout">Log out</a>
+                        </div>
+                        <span>Shipping Address</span>
+                        <form method="post" asp-action="Create">
+                            <div class="grid md:grid-cols-2 md:gap-2">
+                                <div class="form-group">
+                                    <select style="margin:4% 0 -10% 0" asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                                </div>
+                                <input type="text" name="FirstName" asp-for="FirstName" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="First name*">
+                                <input type="text" name="LastName" asp-for="LastName" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Last name*">
+                            </div>
+                            <input type="text" name="Addrss" asp-for="Addrss" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Address*">
+                            <div class="grid md:grid-cols-3 md:gap-2">
+                                <input type="text" name="Zipcode" asp-for="Zipcode" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Zipcode*">
+                                <input type="text" name="City" asp-for="City" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="City*">
+                                <input type="text" name="State" asp-for="State" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="State*">
+                            </div>
+                            <input type="text" name="Country" asp-for="Country" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Country*">
+                            <input type="text" name="Phone" asp-for="Phone" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Phone Number*">
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example" style="margin:15px auto;">
+                                <a class="btn btn-sm btn-outline-danger" style="right:10px;" asp-action="Index">Clear Cart</a>
+                                <a class="btn btn-sm btn-outline-warning" style="right:10px;" asp-controller="Product" asp-action="Index">Continue Shopping</a>
+                                <input class="btn btn-sm btn-outline-success" type="submit" value="Checkout">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+</body>
